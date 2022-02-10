@@ -3,9 +3,9 @@ package main
 import (
 	log "github.com/sirupsen/logrus"
 	"net/http"
-	controller "store-ming/api/authserver/api/parse/controller/v1"
-	"store-ming/api/authserver/api/parse/global"
-	sViper "store-ming/component-base/pkg/viper"
+	controller "github.com/zxm1124/store-ming/api/authserver/api/parse/controller/v1"
+	"github.com/zxm1124/store-ming/api/authserver/api/parse/global"
+	sViper "github.com/zxm1124/store-ming/component-base/pkg/viper"
 	"strconv"
 )
 
