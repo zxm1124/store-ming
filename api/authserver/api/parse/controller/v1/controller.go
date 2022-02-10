@@ -4,7 +4,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	auth "github.com/zxm1124/component-base/pkg/auth/v1"
 	"net/http"
-	"github.com/zxm1124/store-ming/api/authserver/api/parse/global"
+	"store-ming/api/authserver/api/parse/global"
 )
 
 // OnAuth 校验用户token
