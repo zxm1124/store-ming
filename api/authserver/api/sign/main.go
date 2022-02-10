@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/sirupsen/logrus"
 	sViper "github.com/zxm1124/component-base/pkg/viper"
-	global "github.com/zxm1124/store-ming/api/authserver/api/sign/global"
+	"github.com/zxm1124/store-ming/api/authserver/api/sign/global"
 	signRpcV1 "github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1"
 	"github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1/pb"
 	"google.golang.org/grpc"
