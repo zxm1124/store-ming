@@ -3,8 +3,8 @@ package v1
 import (
 	"context"
 	auth "github.com/zxm1124/component-base/pkg/auth/v1"
-	global "store-ming/api/authserver/api/sign/global"
-	"store-ming/api/authserver/api/sign/rpc/v1/pb"
+	global "github.com/zxm1124/store-ming/api/authserver/api/sign/global"
+	"github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1/pb"
 )
 
 type SignServer struct{}
