@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1/pb"
+	"github.com/zxm1124/store-ming/internal/authserver/api/sign/rpc/v1/pb"
 	"google.golang.org/grpc"
 	"testing"
 )

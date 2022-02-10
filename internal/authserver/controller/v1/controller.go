@@ -5,7 +5,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	auth "github.com/zxm1124/component-base/pkg/auth/v1"
 	"github.com/zxm1124/component-base/pkg/code"
-	"github.com/zxm1124/store-ming/api/authserver/api/parse/global"
+	"github.com/zxm1124/store-ming/internal/authserver/meta"
 )
 
 // OnAuth 校验用户token
@@ -28,7 +28,7 @@ func OnAuth(c *gin.Context) {
 		return
 	}
 
-	secret := global.AuthInfo.SignInfo.Secret
+	secret := meta.AuthInfo.SignInfo.Secret
 
 	if ok, _ := auth.ParseToken(tokenString, secret); !ok {
 		err := code.ErrTokenInvalid

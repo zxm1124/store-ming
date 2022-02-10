@@ -1,11 +1,4 @@
-package v1
-
-const (
-	SECRET   = "!#sd2xo3po@a439skl1hnkna0i9saiue12bjbm"
-	AUDIENCE = "auth.storeming.com"
-	TIMEOUT  = 2
-	ISSUER   = "gateway"
-)
+package meta
 
 type SignInfo struct {
 	// Secret 签发密钥

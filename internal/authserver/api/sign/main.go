@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/sirupsen/logrus"
 	sViper "github.com/zxm1124/component-base/pkg/viper"
-	"github.com/zxm1124/store-ming/api/authserver/api/sign/global"
-	signRpcV1 "github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1"
-	"github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1/pb"
+	signRpcV1 "github.com/zxm1124/store-ming/internal/authserver/api/sign/rpc/v1"
+	"github.com/zxm1124/store-ming/internal/authserver/api/sign/rpc/v1/pb"
+	"github.com/zxm1124/store-ming/internal/authserver/meta"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	listener, err := net.Listen("tcp", ":"+strconv.Itoa(global.AuthInfo.SignRpcPort))
+	listener, err := net.Listen("tcp", ":"+strconv.Itoa(meta.AuthInfo.SignRpcPort))
 	if err != nil {
 		logrus.WithFields(logrus.Fields{}).Panicf("net.Listen failed: %v", err)
 	}
@@ -26,7 +26,7 @@ func main() {
 
 	//等待网络连接
 	logrus.Infof("Auth SignToken Rpc Server listening port at %d",
-		global.AuthInfo.SignRpcPort)
+		meta.AuthInfo.SignRpcPort)
 
 	err = s.Serve(listener)
 	if err != nil {
@@ -36,7 +36,7 @@ func main() {
 
 // init函数
 func init() {
-	err := sViper.SetupSetting("auth", &global.AuthInfo)
+	err := sViper.SetupSetting("auth", &meta.AuthInfo)
 	if err != nil {
 		log.Panicf("init.setupSetting code: %v", err)
 	}
