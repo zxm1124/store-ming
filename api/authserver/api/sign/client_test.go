@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	"google.golang.org/grpc"
-	"github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1/pb"
+	"store-ming/api/authserver/api/sign/rpc/v1/pb"
 	"testing"
 )
 
