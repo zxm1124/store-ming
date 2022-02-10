@@ -1,21 +1,27 @@
 package v1
 
 import (
+	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	auth "github.com/zxm1124/component-base/pkg/auth/v1"
+	"github.com/zxm1124/component-base/pkg/code"
 	"github.com/zxm1124/store-ming/api/authserver/api/parse/global"
-	"net/http"
 )
 
 // OnAuth 校验用户token
-func OnAuth(w http.ResponseWriter, req *http.Request) {
+func OnAuth(c *gin.Context) {
 
 	// 用户没有token
-	tokenString := req.Header.Get("X-Authentication")
+	tokenString := c.GetHeader(("X-Authentication"))
 	if tokenString == "" {
-		// 需要进行登录跳转 返回302
-		_, _ = w.Write([]byte("The user has not logged in yet, and is jumping to the login page"))
-		w.WriteHeader(http.StatusFound)
+		err := code.ErrTokenInvalid
+
+		resp := gin.H{
+			"code": err.Code(),
+			"msg":  err.Msg(),
+		}
+
+		c.JSON(err.HttpStatus(), resp)
 
 		log.Info("token is nil")
 
@@ -25,9 +31,14 @@ func OnAuth(w http.ResponseWriter, req *http.Request) {
 	secret := global.AuthInfo.SignInfo.Secret
 
 	if ok, _ := auth.ParseToken(tokenString, secret); !ok {
-		// 需要进行登录跳转 返回302
-		_, _ = w.Write([]byte("The user has not logged in yet, and is jumping to the login page"))
-		w.WriteHeader(http.StatusFound)
+		err := code.ErrTokenInvalid
+
+		resp := gin.H{
+			"code": err.Code(),
+			"msg":  err.Msg(),
+		}
+
+		c.JSON(err.HttpStatus(), resp)
 
 		log.Info("parse token failed, token is invalid")
 
@@ -36,9 +47,14 @@ func OnAuth(w http.ResponseWriter, req *http.Request) {
 
 	// 用户有token
 	if ok, claims := auth.ParseToken(tokenString, secret); ok {
-		_, _ = w.Write([]byte("authenticated success"))
-		// 校验成功 返回200
-		w.WriteHeader(http.StatusOK)
+		err := code.ErrSuccess
+
+		resp := gin.H{
+			"code": err.Code(),
+			"msg":  err.Msg(),
+		}
+
+		c.JSON(err.HttpStatus(), resp)
 
 		log.WithFields(log.Fields{
 			"instanceID": claims.InstanceID,

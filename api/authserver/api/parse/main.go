@@ -1,22 +1,25 @@
 package main
 
 import (
-	log "github.com/sirupsen/logrus"
+	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 	sViper "github.com/zxm1124/component-base/pkg/viper"
 	controller "github.com/zxm1124/store-ming/api/authserver/api/parse/controller/v1"
 	"github.com/zxm1124/store-ming/api/authserver/api/parse/global"
-	"net/http"
+	"log"
 	"strconv"
 )
 
 func main() {
-	http.HandleFunc(global.AuthInfo.ParsePath, controller.OnAuth)
+	router := gin.Default()
+	router.GET(global.AuthInfo.ParsePath, controller.OnAuth)
 
-	log.Infof("Auth ParseToken Http Server listening port at %d, the handle api is '%s'",
-		global.AuthInfo.ParseHttpPort,
-		global.AuthInfo.ParsePath)
-
-	_ = http.ListenAndServe(":"+strconv.Itoa(global.AuthInfo.ParseHttpPort), nil)
+	err := router.Run(":" + strconv.Itoa(global.AuthInfo.ParseHttpPort))
+	if err != nil {
+		logrus.Panicf("Auth ParseToken Http Server listening failed, port at %d handlePath is %s",
+			global.AuthInfo.ParseHttpPort,
+			global.AuthInfo.ParsePath)
+	}
 }
 
 // init函数
