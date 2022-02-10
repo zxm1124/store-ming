@@ -1,9 +1,20 @@
+#FROM centos
+#MAINTAINER "xinmaozhu@foxmail.com"
+#
+#WORKDIR /auth
+#COPY . /auth
+#
+#EXPOSE 80
+#
+#CMD ./api/parse_server
+
+
 FROM centos
 MAINTAINER "xinmaozhu@foxmail.com"
 
 WORKDIR /auth
 COPY . /auth
 
-EXPOSE 80
+EXPOSE 8181
 
-CMD ./auth_server
+CMD ./api/sign_server

@@ -9,3 +9,23 @@ Auth:
     Timeout: 2 #hours
     Issuer: "auth-server"
     Audience: "auth.storeming.com"
+
+ParseLog:
+  # Path log file output location
+  Path: parse_server.log
+  # Level log output level
+  Level: info
+  # Formatter test or json
+  Formatter: json
+  # Output os or file
+  Output: file
+
+SignLog:
+  # Path log file output location
+  Path: sign_server.log
+  # Level log output level
+  Level: info
+  # Formatter test or json
+  Formatter: json
+  # Output os or file
+  Output: file
