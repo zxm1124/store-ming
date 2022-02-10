@@ -5,9 +5,9 @@ import (
 	"google.golang.org/grpc"
 	"log"
 	"net"
-	global "github.com/zxm1124/store-ming/api/authserver/api/sign/global"
-	signRpcV1 "github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1"
-	"github.com/zxm1124/store-ming/api/authserver/api/sign/rpc/v1/pb"
+	global "store-ming/api/authserver/api/sign/global"
+	signRpcV1 "store-ming/api/authserver/api/sign/rpc/v1"
+	"store-ming/api/authserver/api/sign/rpc/v1/pb"
 	sViper "github.com/zxm1124/component-base/pkg/viper"
 	"strconv"
 )
