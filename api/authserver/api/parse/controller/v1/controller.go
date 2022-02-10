@@ -3,8 +3,8 @@ package v1
 import (
 	log "github.com/sirupsen/logrus"
 	auth "github.com/zxm1124/component-base/pkg/auth/v1"
+	"github.com/zxm1124/store-ming/api/authserver/api/parse/global"
 	"net/http"
-	"store-ming/api/authserver/api/parse/global"
 )
 
 // OnAuth 校验用户token
